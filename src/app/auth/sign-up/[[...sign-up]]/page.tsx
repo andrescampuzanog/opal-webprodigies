@@ -1,8 +1,5 @@
-import { SignUp } from "@clerk/nextjs";
-import React from "react";
+import { SignUp } from '@clerk/nextjs'
 
-type Props = {};
-
-export default function SignUpComponent({}: Props) {
-  return <SignUp />;
+export default function SignUpPage() {
+  return <SignUp />
 }

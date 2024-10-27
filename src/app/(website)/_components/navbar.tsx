@@ -1,17 +1,23 @@
-import { MenuIcon, User } from "lucide-react";
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
+import { Menu, User } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
 
-type Props = {};
+import React from 'react'
+
+type Props = {}
 
 const LandingPageNavBar = (props: Props) => {
   return (
     <div className="flex w-full justify-between items-center">
       <div className="text-3xl font-semibold flex items-center gap-x-3">
-        <MenuIcon className="w-8 h-8" />
-        <Image alt="logo" src="/opal-logo.svg" width={40} height={40} />
+        <Menu className="w-8 h-8" />
+        <Image
+          alt="logo"
+          src="/opal-logo.svg"
+          width={40}
+          height={40}
+        />
         Opal
       </div>
       <div className="hidden gap-x-10 items-center lg:flex">
@@ -31,7 +37,7 @@ const LandingPageNavBar = (props: Props) => {
         </Button>
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default LandingPageNavBar;
+export default LandingPageNavBar
