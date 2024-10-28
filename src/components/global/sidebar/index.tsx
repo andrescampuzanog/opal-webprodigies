@@ -16,7 +16,9 @@ import { Separator } from "@/components/ui/separator";
 import { useQueryData } from "@/hooks/userQueryData";
 import { getWorkSpaces } from "@/actions/workspace";
 import { WorkspaceProps } from "@/types/index.type";
-
+import Modal from "@/components/global/modal";
+import { PlusCircle } from "lucide-react";
+import Search from "@/components/global/search";
 
 type Props = {
   activeWorkspaceId: string;
@@ -24,19 +26,17 @@ type Props = {
 
 export default function Sidebar({ activeWorkspaceId }: Props) {
   const router = useRouter();
-  
-  const { data, isFetched } = useQueryData(['user-workspaces'], getWorkSpaces)
 
+  const { data, isFetched } = useQueryData(["user-workspaces"], getWorkSpaces);
 
-  const { data: workspace } = data as WorkspaceProps
-
+  const { data: workspace } = data as WorkspaceProps;
 
   const onChangeActiveWorkspace = (value: string) => {
-    router.push(`/dashboard/${value}`)
-  }
+    router.push(`/dashboard/${value}`);
+  };
   const currentWorkspace = workspace.workspace.find(
     (s) => s.id === activeWorkspaceId
-  )
+  );
 
   return (
     <div className="bg-[#111111] flex-none relative p-4 h-full w-[250px] flex flex-col gap-4 items-center overflow-hidden">
@@ -75,6 +75,23 @@ export default function Sidebar({ activeWorkspaceId }: Props) {
           </SelectGroup>
         </SelectContent>
       </Select>
+      <Modal
+        trigger={
+          <span className="text-sm cursor-pointer flex items-center justify-center bg-neutral-800/90  hover:bg-neutral-800/60 w-full rounded-sm p-[5px] gap-2">
+            <PlusCircle
+              size={15}
+              className="text-neutral-800/90 fill-neutral-500"
+            />
+            <span className="text-neutral-400 font-semibold text-xs">
+              Invite To Workspace
+            </span>
+          </span>
+        }
+        title="Invite To Workspace"
+        description="Invite other users to your workspace"
+      >
+        <Search workspaceId={activeWorkspaceId} />
+      </Modal>
     </div>
   );
 }

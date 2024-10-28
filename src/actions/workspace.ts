@@ -42,7 +42,6 @@ export const verifyAccessToWorkspace = async (workspaceId: string) => {
     }
 }
 
-
 export const getWorkspaceFolders = async (workSpaceId: string) => {
     try {
         const isFolders = await client.folder.findMany({
