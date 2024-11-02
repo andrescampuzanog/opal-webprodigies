@@ -5,6 +5,7 @@ import React from 'react'
 type Props = {}
 
 const DasboardPage = async (props: Props) => {
+  
   //Authentication
   const auth = await onAuthenticateUser()
   if (auth.status === 200 || auth.status === 201)
